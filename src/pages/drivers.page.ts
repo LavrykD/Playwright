@@ -1,7 +1,6 @@
 import { BaseViewPage } from "./base-view.page";
-import { Navigatable } from "./navigatable";
 
-export class DriversPage extends BaseViewPage implements Navigatable {
+export class DriversPage extends BaseViewPage{
     readonly nameFilter = this.page.locator('input#search--name-field');
 
     async filterByName(driverName: string) {

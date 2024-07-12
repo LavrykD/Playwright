@@ -1,7 +1,6 @@
 import { BaseViewPage } from "./base-view.page";
-import { Navigatable } from "./navigatable";
 
-export class TrucksPage extends BaseViewPage implements Navigatable {
+export class TrucksPage extends BaseViewPage{
     readonly truckFilter = this.page.getByLabel('Number', { exact: true });
 
     async filterByName(truckName: string) {
