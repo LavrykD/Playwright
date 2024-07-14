@@ -1,4 +1,5 @@
-import { test, expect } from "../src/fixtures/base";
+import { test } from "../src/fixtures/base";
+import { goto } from "../src/pages/navigatable";
 
 test.describe("Other Pages", () => {
     test.beforeEach(async ({ steps, loginPage, driversPage }) => {
@@ -7,7 +8,7 @@ test.describe("Other Pages", () => {
         await steps.someStep2();
     });
 
-    test('drivers page', async () => {
-
+    test('drivers page', async ({ driversPage }) => {
+        await goto(driversPage);
     })
 })
