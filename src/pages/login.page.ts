@@ -10,8 +10,6 @@ export class LoginPage extends Base implements Navigatable {
     readonly loginButton = this.page.getByRole('button', { name: 'Log in' });
 
     async login() {
-        await this.page.goto(this.url());
-
         const email = process.env.EMAIL;
         const password = process.env.PASSWORD;
         

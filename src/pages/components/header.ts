@@ -1,5 +1,6 @@
 import { Base } from "../base";
 
 export class Header extends Base {
-    readonly userButton = this.page.locator('[aria-haspopup="menu"]').first();
+    protected readonly root = this.locator('header');
+    readonly userButton = this.locator('[aria-haspopup="menu"]').first();
 }
