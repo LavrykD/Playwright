@@ -9,6 +9,8 @@ export class LoginSteps {
     async login(loginPage: LoginPage, driversPage: DriversPage) {
         await goto(loginPage);
 
+        await expect(loginPage.loginButton).toBeVisible();
+
         await loginPage.login();
 
         await goto(driversPage);

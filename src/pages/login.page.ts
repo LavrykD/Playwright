@@ -16,6 +16,7 @@ export class LoginPage extends Base implements Navigatable {
         await this.emailField.fill(email);
         await this.passwordField.fill(password);
         await this.loginButton.click();
+        await this.page.waitForResponse('/api/v1/dispatchers/me?')
     };
 
     async login_failed() {
