@@ -1,19 +1,12 @@
 import { expect } from "@playwright/test";
-import { DriversPage } from "../pages/drivers.page";
-import { LoginPage } from "../pages/login.page";
-import { goto } from "../pages/navigatable";
 import { step } from "../helpers/step";
+import { BaseSteps } from "./base-steps";
 
-export class LoginSteps {
-    @step('Login user')
-    async login(loginPage: LoginPage, driversPage: DriversPage) {
-        await goto(loginPage);
-
-        await expect(loginPage.loginButton).toBeVisible();
-
-        await loginPage.login();
-
-        await goto(driversPage);
-        await expect(driversPage.header.userButton).toBeVisible();
+export class LoginSteps extends BaseSteps {
+    @step('Check login page')
+    async checkLoginPage() {
+        await expect(this.app.loginPage.emailField).toBeVisible();
+        await expect(this.app.loginPage.passwordField).toBeVisible();
+        await expect(this.app.loginPage.loginButton).toBeVisible();
     }
 }

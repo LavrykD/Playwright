@@ -1,24 +1,18 @@
 export * from '@playwright/test';
 
 import { test as base } from '@playwright/test';
-import { LoginPage } from '../pages/login.page';
-import { DriversPage } from '../pages/drivers.page';
 import { Steps } from '../steps';
 import { API } from '../helpers/api';
-import { TrucksPage } from '../pages/trucks.page';
+import { App } from '../helpers/app';
 
-type MyFixtures = {
-    loginPage: LoginPage;
-    driversPage: DriversPage;
-    trucksPage: TrucksPage;
-    steps: Steps;
+type TestFixtures = {
+    app: App;
     api: API;
+    steps: Steps;
 };
 
-export const test = base.extend<MyFixtures>({
-    loginPage: async ({ page }, use) => await use(new LoginPage(page)),
-    driversPage: async ({ page }, use) => await use(new DriversPage(page)),
-    trucksPage: async ({page}, use) => await use(new TrucksPage(page)),
-    steps: async ({ page }, use) => await use(new Steps()),
-    api: async ({ page }, use) => await use(new API(page.request))
+export const test = base.extend<TestFixtures>({
+    app: async ({ page }, use) => await use(new App(page)),
+    api: async ({ page }, use) => await use(new API(page.request)),
+    steps: async ({ app, api }, use) => await use(new Steps(app, api))
 });

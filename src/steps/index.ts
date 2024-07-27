@@ -1,11 +1,12 @@
 import { applyMixins } from "../helpers/utils";
+import { BaseSteps } from "./base-steps";
+import { DriversSteps } from "./drivers";
 import { LoginSteps } from "./login";
-import { SomeSteps } from "./some-steps"
 
-class Steps { };
+class Steps extends BaseSteps { };
 
-interface Steps extends LoginSteps, SomeSteps { };
+interface Steps extends LoginSteps, DriversSteps { };
 
-applyMixins(Steps, [LoginSteps, SomeSteps]);
+applyMixins(Steps, [LoginSteps, DriversSteps]);
 
 export { Steps };
